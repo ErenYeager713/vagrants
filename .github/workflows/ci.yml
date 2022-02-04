@@ -34,12 +34,19 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          
           echo Install k3s cluster...
           curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC='--flannel-backend=none --disable traefik' sh -s - --write-kubeconfig-mode 644
+          
           echo Make k3s cluster config default...
           export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+          
+          echo Install helm...
+          curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+          
           echo Install karmor...
           curl -sfL https://raw.githubusercontent.com/kubearmor/kubearmor-client/main/install.sh | sudo sh -s -- -b /usr/local/bin
+          
           echo Install cilium cli tool...
           curl -L --remote-name-all https://github.com/cilium/cilium-cli/releases/latest/download/cilium-linux-amd64.tar.gz{,.sha256sum}
           echo Checking for cilium tar file...
@@ -48,12 +55,16 @@ jobs:
           sudo tar xzvfC cilium-linux-amd64.tar.gz /usr/local/bin
           echo Removing the tar file...
           rm cilium-linux-amd64.tar.gz{,.sha256sum}
+          
           echo Install Daemonsets and Services...
           curl -s https://raw.githubusercontent.com/accuknox/tools/main/install.sh | bash
+          
           echo Checking status...
           kubectl get pods -A
+          
           echo Install sample k8s application...
           kubectl apply -f https://raw.githubusercontent.com/kubearmor/KubeArmor/main/examples/wordpress-mysql/wordpress-mysql-deployment.yaml
+          
           echo Get Auto discovered policies...
           curl -s https://raw.githubusercontent.com/accuknox/tools/main/get_discovered_yamls.sh | bash
 
