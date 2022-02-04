@@ -38,6 +38,8 @@ jobs:
           curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC='--flannel-backend=none --disable traefik' sh -s - --write-kubeconfig-mode 644
           echo Make k3s cluster config default
           export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+          echo Install karmor
+          curl -sfL https://raw.githubusercontent.com/kubearmor/kubearmor-client/main/install.sh | sudo sh -s -- -b /usr/local/bin
           echo Install Daemonsets and Services
           curl -s https://raw.githubusercontent.com/accuknox/tools/main/install.sh | bash
           echo Install sample k8s application
