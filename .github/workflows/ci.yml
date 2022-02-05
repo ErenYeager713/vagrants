@@ -61,8 +61,6 @@ jobs:
           echo Cilium status...
           cilium status
           
-          echo Enable hubble
-          cilium hubble enable
           
           echo Install Daemonsets and Services...
           curl -s https://raw.githubusercontent.com/accuknox/tools/main/install.sh | bash
@@ -81,6 +79,12 @@ jobs:
           
           echo Waiting for knoxautopolicy to be ready...
           kubectl wait --for=condition=ready pod -l container=knoxautopolicy --timeout=60s --namespace explorer
+          
+          echo Cilium status...
+          cilium status
+          
+          echo Enable hubble
+          cilium hubble enable
           
           echo Checking status...
           kubectl get pods -A
