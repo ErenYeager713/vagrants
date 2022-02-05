@@ -91,6 +91,9 @@ jobs:
           
           echo Waiting for hubble-relay to be ready...
           kubectl wait --for=condition=ready pod -l k8s-app=hubble-relay --timeout=60s --namespace kube-system
+                    
+          echo Install sample k8s application...
+          kubectl apply -f https://raw.githubusercontent.com/kubearmor/KubeArmor/main/examples/wordpress-mysql/wordpress-mysql-deployment.yaml
           
           echo Waiting for wordpress to be ready...
           kubectl wait --for=condition=ready pod -l app=wordpress --timeout=60s --namespace wordpress-mysql
@@ -100,9 +103,6 @@ jobs:
           
           echo Checking status...
           kubectl get pods -A
-          
-          echo Install sample k8s application...
-          kubectl apply -f https://raw.githubusercontent.com/kubearmor/KubeArmor/main/examples/wordpress-mysql/wordpress-mysql-deployment.yaml
           
           echo Get Auto discovered policies...
           curl -s https://raw.githubusercontent.com/accuknox/tools/main/get_discovered_yamls.sh | bash
