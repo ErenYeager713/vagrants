@@ -56,6 +56,8 @@ jobs:
           echo Removing the tar file...
           rm cilium-linux-amd64.tar.gz{,.sha256sum}
           
+          cilium install
+          
           echo Cilium status...
           cilium status
           
