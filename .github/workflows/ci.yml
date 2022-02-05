@@ -78,7 +78,7 @@ jobs:
           kubectl wait --for=condition=ready pod -l container=knoxautopolicy --timeout=60s --namespace explorer
           
           echo Waiting for hubble-relay to be ready...
-          kubectl wait --for=condition=ready pod -l container=hubble-relay --timeout=60s --namespace kube-system
+          kubectl wait --for=condition=ready pod -l k8s-app=hubble-relay --timeout=60s --namespace kube-system
           
           echo Checking status...
           kubectl get pods -A
