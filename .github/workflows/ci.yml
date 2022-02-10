@@ -106,4 +106,6 @@ jobs:
           
           echo Get Auto discovered policies...
           curl -s https://raw.githubusercontent.com/accuknox/tools/main/get_discovered_yamls.sh | bash
+          
+          timeout-minutes: 10
 
