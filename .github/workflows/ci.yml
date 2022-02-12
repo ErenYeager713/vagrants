@@ -109,9 +109,20 @@ jobs:
           
           echo Get Auto discovered policies...
           curl -s https://raw.githubusercontent.com/accuknox/tools/main/get_discovered_yamls.sh | bash
-          
-          cat kubearmor_policies_default_explorer_knoxautopolicy*
-          
+                    
           echo Listing all policies....
           ls -d kubearmor_policies_default*
+          
+          echo Installing go...
+          echo STEP 1 >>>>>>>>>>>>>>>>>>>>
+          wget -c https://golang.org/dl/go1.17.7.linux-amd64.tar.gz
+          echo STEP 2 >>>>>>>>>>>>>>>>>>>>
+          sudo tar -C /usr/local -xvzf go1.17.7.linux-amd64.tar.gz
+          echo STEP 3 >>>>>>>>>>>>>>>>>>>>
+          export  PATH=$PATH:/usr/local/go/bin
+          echo STEP 4 >>>>>>>>>>>>>>>>>>>>
+          go version
+          
+          
+          
 
