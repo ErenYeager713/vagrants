@@ -104,8 +104,14 @@ jobs:
           echo Checking status...
           kubectl get pods -A
           
+          echo Sleeping for 20 seconds...
+          sleep 20
+          
           echo Get Auto discovered policies...
           curl -s https://raw.githubusercontent.com/accuknox/tools/main/get_discovered_yamls.sh | bash
           
           cat kubearmor_policies_default_explorer_knoxautopolicy*
+          
+          echo Listing all policies....
+          ls -d kubearmor_policies_default*
 
