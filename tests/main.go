@@ -4,6 +4,7 @@ import(
 		"fmt"
     "os"
     "path/filepath"
+		"strings"
 )
 
 func main(){
@@ -19,5 +20,9 @@ func main(){
     }
     for _, file := range files {
         fmt.Println(file)
+				var res = strings.Contains(file, "kubearmor_policies_default_explorer_knoxautopolicy")
+				if res == true {
+					fmt.Println("Found knoxautopolicy")
+				}
     }
 }
