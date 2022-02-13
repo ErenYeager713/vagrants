@@ -22,3 +22,20 @@ jobs:
 
         - name: Hello World
           run: echo Hello World!!
+
+        - name: Set up Ginkgo
+          run: |
+            echo Onsi Ginkgo
+            go get github.com/onsi/ginkgo/v2/ginkgo
+            echo Onsi Gomega
+            go get github.com/onsi/gomega/...
+            echo Ubuntu Ginkgo dev
+            sudo apt-get install golang-ginkgo-dev
+
+            echo Testing...
+            ginkgo help
+
+        - name: Run Ginkgo test suite
+          run: echo Running...
+
+
