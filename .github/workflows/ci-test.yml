@@ -36,6 +36,6 @@ jobs:
             ginkgo help
 
         - name: Run Ginkgo test suite
-          run: echo Running...
+          run: go run ./tests/main.go
 
 
