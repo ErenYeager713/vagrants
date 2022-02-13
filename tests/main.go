@@ -26,7 +26,7 @@ func main(){
 					fmt.Println("Found knoxautopolicy")
 					data, err1 := ioutil.ReadFile("file.txt")
 				  if err1 != nil {
-				    fmt.Println("File reading error", err)
+				    fmt.Println("File reading error", err1)
 				    return
 				  }
 				  fmt.Println("Contents of file:")
