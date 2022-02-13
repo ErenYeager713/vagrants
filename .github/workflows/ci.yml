@@ -136,3 +136,6 @@ jobs:
 
       - name: Run Ginkgo test suite
         run: go run ./tests/main.go
+
+      - name: PWD
+        run: pwd
