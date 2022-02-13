@@ -5,6 +5,7 @@ import(
     "os"
     "path/filepath"
 		"strings"
+  	"io/ioutil"
 )
 
 func main(){
@@ -23,6 +24,13 @@ func main(){
 				var res = strings.Contains(file, "kubearmor_policies_default_explorer_knoxautopolicy")
 				if res == true {
 					fmt.Println("Found knoxautopolicy")
+					data, err1 := ioutil.ReadFile("file.txt")
+				  if err1 != nil {
+				    fmt.Println("File reading error", err)
+				    return
+				  }
+				  fmt.Println("Contents of file:")
+				  fmt.Println(string(data))
 				}
     }
 }
