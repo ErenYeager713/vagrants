@@ -113,16 +113,29 @@ jobs:
           echo Listing all policies....
           ls -d kubearmor_policies_default*
           
-          echo Installing go...
-          echo STEP 1..........
-          wget -c https://golang.org/dl/go1.17.7.linux-amd64.tar.gz
-          echo STEP 2..........
-          sudo tar -C /usr/local -xvzf go1.17.7.linux-amd64.tar.gz
-          echo STEP 3..........
-          export  PATH=$PATH:/usr/local/go/bin
-          echo STEP 4..........
-          go version
           
+     - name: Set up Go
+       uses: actions/setup-go@v2
+       with:
+           go-version: 1.17
+
+     - name: Hello World
+       run: echo Hello World!!
+
+     - name: Set up Ginkgo
+       run: |
+            echo Onsi Ginkgo
+            go get github.com/onsi/ginkgo/v2/ginkgo
+            echo Onsi Gomega
+            go get github.com/onsi/gomega/...
+            echo Ubuntu Ginkgo dev
+            sudo apt-get install golang-ginkgo-dev
+
+            echo Testing...
+            ginkgo help
+
+     - name: Run Ginkgo test suite
+       run: go run ./tests/main.go
           
           
 
