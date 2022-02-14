@@ -21,9 +21,9 @@ func main(){
     }
     for _, file := range files {
         fmt.Println(file)
-				var res = strings.Contains(file, "kubearmor_policies_default_explorer_knoxautopolicy")
+				var res = strings.Contains(file, "kubearmor_policies_default_explorer_mysql")
 				if res == true {
-					fmt.Println("Found knoxautopolicy")
+					fmt.Println("Found explorer mysql")
 					data, err1 := ioutil.ReadFile(file)
 				  if err1 != nil {
 				    fmt.Println("File reading error", err1)
